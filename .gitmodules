@@ -1,0 +1,14 @@
+[submodule "boki"]
+	path = boki
+	url = https://github.com/photoszzt/boki.git
+[submodule "boki/"]
+	branch = dev
+[submodule "nexmark"]
+	path = nexmark
+	url = https://github.com/photoszzt/nexmark.git
+[submodule "impeller"]
+	path = impeller
+	url = https://github.com/photoszzt/impeller.git
+[submodule "impeller-experiments"]
+	path = impeller-experiments
+	url = https://github.com/photoszzt/impeller-experiments.git
