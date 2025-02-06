@@ -68,3 +68,35 @@ Executing `scripts/aws_provision.sh` on the controller machine creates these gro
   ```bash
   cd ./impeller/ && make -j4
   ```
+
+#### Compiling exp tool
+- latency
+  ```bash
+  cd ./impeller-experiments/latency/ && cargo build --release && cd -
+  ```
+
+#### example command
+- run query 1 for 60 seconds with 1 iterations
+  ```bash
+  cd ./impeller-experiments/nexmark_impeller/ && ./run_q1_quick.sh && cd -
+  ```
+
+#### Rerun experiments that produce figure 7
+- experiments on Impeller 
+  ```bash
+  cd ./impeller-experiments/nexmark_impeller/
+  # run ./run_q1.sh to ./run_q8.sh
+  ```
+- experiments on Kafka Streams
+  ```bash
+  cd ./impeller-experiments/nexmark_kafka-streams
+  # run ./run_q1.sh to ./run_q8.sh
+  ```
+Serially execute these scripts are estimated to take 6300 mins. 
+
+#### Rerun experiments that produce figure 7
+  ```bash
+  cd ./impeller-experiments/nexmark_impeller/
+  # run ./run_q1_commit_interval.sh to ./run_q8_commit_interval.sh
+  ```
+Serially execute these scripts are estimated to take 1600 mins. 
