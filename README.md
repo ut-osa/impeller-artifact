@@ -23,6 +23,22 @@ but does not affect experimental results.
 In our own setup, we use a `t3.micro` EC2 instance installed with Ubuntu 20.04 as the controller machine. If you also
 want to compiling the code on the controller machine, we use a `c5.xlarge` EC2 instance.
 
+The controller needs to set an IAM role. The IAM role needs to have these permission policy: AmazonEC2FullAccess and IAMReadOnlyAccess. 
+In additional to the AWS managed permission policies, we also set up a custom policy pass-iam-role:
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "VisualEditor0",
+      "Effect": "Allow",
+      "Action": "iam:PassRole",
+      "Resource": "arn:aws:iam::<account_id>:role/*"
+    }
+  ]
+}
+```
+
 On the controller machine, clone this repository with all git submodules
 ```bash
 git clone --recursive https://github.com/ut-osa/impeller-artifact.git
@@ -75,6 +91,8 @@ Executing `scripts/aws_provision.sh` on the controller machine creates these gro
   ```bash
   cd ./impeller-experiments/latency/ && cargo build --release && cd -
   ```
+
+### Experiments ###
 
 #### Example command
 - run query 1 for 60 seconds with 1 iterations
@@ -143,5 +161,12 @@ latency scan --prefix q7JoinMaxBid --suffix .json.gz --output $output_dir $q7_ex
 latency scan --prefix q8JoinStream --suffix .json.gz --output $output_dir $q8_exp_dir
 ```
 
+### License ###
+All of our repository included in the artifact are in Apache 2.0 License.
 
+### Paper ###
+Impeller: Stream Processing on Shared Logs
 
+### Known limitations ###
+- For long running experiments, sometimes Boki cluster might fail to setup and if you see the experiment emits a timeout error for waiting the Boki to finish setup, you need to record the current progress and restart the experiment.
+- Impeller is a research quality product which might have multiple sharp edges. Do not use this repo in production environment. 
