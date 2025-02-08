@@ -20,7 +20,7 @@ which is based on Ubuntu 20.04 with necessary dependencies installed.
 A controller machine in AWS `us-east-2` region is required for running scripts executing experiments.
 The controller machine can use very small EC2 instance type, as it only provisions and controls experiment VMs,
 but does not affect experimental results.
-In our own setup, we use a `t3.micro` EC2 instance installed with Ubuntu 20.04 as the controller machine.
+In our own setup, we use a `c5.xlarge` EC2 instance installed with Ubuntu 20.04 as the controller machine.
 
 On the controller machine, clone this repository with all git submodules
 ```bash
@@ -94,7 +94,7 @@ Executing `scripts/aws_provision.sh` on the controller machine creates these gro
   ```
 Serially execute these scripts are estimated to take 6300 mins. 
 
-#### Rerun experiments that produce figure 7
+#### Rerun experiments that produce figure 8
   ```bash
   cd ./impeller-experiments/nexmark_impeller/
   # run ./run_q1_commit_interval.sh to ./run_q8_commit_interval.sh
