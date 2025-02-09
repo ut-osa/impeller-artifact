@@ -163,6 +163,7 @@ latency scan --prefix q8JoinStream --suffix .json.gz --output $output_dir $q8_ex
 
 ### License ###
 All of our repository included in the artifact are in Apache 2.0 License.
+We use a script docker-stack-wait.sh which is districuted in MIT License.
 
 ### Paper ###
 Impeller: Stream Processing on Shared Logs
