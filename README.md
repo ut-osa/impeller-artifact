@@ -89,6 +89,7 @@ Executing `scripts/aws_provision.sh` on the controller machine creates these gro
 #### Compiling exp tool
 - latency
   ```bash
+  sudo apt-get install -y fontconfig libfontconfig-dev
   cd ./impeller-experiments/latency/ && cargo build --release && cd -
   ```
 
