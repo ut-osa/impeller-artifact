@@ -102,6 +102,7 @@ Executing `scripts/aws_provision.sh` on the controller machine creates these gro
   ```
 
 #### Rerun experiments that produce figure 7
+- Artifact evaluator: Skip this step
 - experiments on Impeller 
   ```bash
   cd ./impeller-experiments/nexmark_impeller/
@@ -115,6 +116,7 @@ Executing `scripts/aws_provision.sh` on the controller machine creates these gro
 Serially execute these scripts are estimated to take 6300 mins. 
 
 #### Rerun experiments that produce figure 8
+- Artifact evaluator: Skip this step
   ```bash
   cd ./impeller-experiments/nexmark_impeller/
   # run ./run_q1_commit_interval.sh to ./run_q8_commit_interval.sh
