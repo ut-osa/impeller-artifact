@@ -100,6 +100,20 @@ Executing `scripts/aws_provision.sh` on the controller machine creates these gro
   ```bash
   cd ./impeller-experiments/nexmark_impeller/ && ./run_q1_quick.sh && cd -
   ```
+  The experiment outputs lots of logs detailing each steps. If you don't want to see those, you can disable the base log print by removing `set -x`.
+  You may see the line similar to `fail to remove nexmark network` or `fail to remove a service`. This is expected for a clean start. The script is trying
+  to kill the previous running experiment and on the fresh start, there's nothing to kill and it will output such message. The result log is in `result.log`.
+  For a successful run, you should see metrics and stats for each task. At the end, you should see the script downloads the stats like this:
+  ```bash
+  source-2.json.gz                                                                                                                                                                    100%  118   584.9KB/s   00:00
+  source-3.json.gz                                                                                                                                                                    100%  118   573.9KB/s   00:00
+  source-0.json.gz                                                                                                                                                                    100%  118   731.6KB/s   00:00
+  query1-3.json.gz                                                                                                                                                                    100%   34KB  70.8MB/s   00:00
+  source-1.json.gz                                                                                                                                                                    100%  117   714.3KB/s   00:00
+  query1-0.json.gz                                                                                                                                                                    100%   34KB  86.2MB/s   00:00
+  query1-2.json.gz                                                                                                                                                                    100%   34KB  87.9MB/s   00:00
+  query1-1.json.gz                                                                                                                                                                    100%   34KB  89.7MB/s   00:00
+  ```
 
 #### Rerun experiments that produce figure 7
 - Artifact evaluator: Skip this step
@@ -188,4 +202,8 @@ Impeller: Stream Processing on Shared Logs
 
 ### Known limitations ###
 - For long running experiments, sometimes Boki cluster might fail to setup and if you see the experiment emits a timeout error for waiting the Boki to finish setup, you need to record the current progress and restart the experiment.
+  If you see a log similar to this, it means the generator starts outputing to Boki log before Boki fully setsup. If you hits this case, kill the experiment and starts again.
+  ```
+  [FATAL] Failed to receive aux buffer header: EOF 
+  ```
 - Impeller is a research quality product which might have multiple sharp edges. Do not use this repo in production environment. 
