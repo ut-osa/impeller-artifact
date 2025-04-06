@@ -198,7 +198,29 @@ All of our repository included in the artifact are in Apache 2.0 License.
 We use a script docker-stack-wait.sh which is districuted in MIT License.
 
 ### Paper ###
+```
 Impeller: Stream Processing on Shared Logs
+Zhiting Zhu (Lepton AI), Zhipeng Jia (Google), Newton Ni (University of Texas at Austin), Dixin Tang (UT Austin), Emmett Witchel (UT Austin)
+```
+BibTex Citation:
+```
+@inproceedings{10.1145/3689031.3717485,
+author = {Zhu, Zhiting and Jia, Zhipeng and Ni, Newton and Tang, Dixin and Witchel, Emmett},
+title = {Impeller: Stream Processing on Shared Logs},
+year = {2025},
+isbn = {9798400711961},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3689031.3717485},
+doi = {10.1145/3689031.3717485},
+abstract = {Current stream processing systems provide exactly-once semantics using checkpointing or a combination of logging and checkpointing. These approaches can introduce high overhead, significantly increasing the latency for normal stream processing because maintaining exactly-once semantics requires coordination across distributed nodes and streams to capture a globally consistent state. We observe that modern distributed shared logs offer a promising solution for maintaining exactly-once semantics with a small overhead. We propose Impeller, a stream processing system that uses a distributed shared log for data storage and exactly-once processing. To maintain exactly-once semantics, Impeller includes a novel and efficient progress marking protocol based on string tags and selective reads in a shared log. The key idea is to leverage the log's record-tagging feature to atomically mark progress across all streams. The experiments over the NEXMark benchmark show that Impeller achieves 1.3\texttimes{} to 5.4\texttimes{} lower p50 latency, or 1.3\texttimes{} to 5.0\texttimes{} higher saturation throughput than Kafka Streams.},
+booktitle = {Proceedings of the Twentieth European Conference on Computer Systems},
+pages = {637–653},
+numpages = {17},
+location = {Rotterdam, Netherlands},
+series = {EuroSys '25}
+}
+```
 
 ### Known limitations ###
 - For long running experiments, sometimes Boki cluster might fail to setup and if you see the experiment emits a timeout error for waiting the Boki to finish setup, you need to record the current progress and restart the experiment.
